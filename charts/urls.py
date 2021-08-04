@@ -5,4 +5,6 @@ from charts import views
 urlpatterns = [
     #path("", include(router.urls)),
     path('index/', views.index, name='index'),
+    path('amiiboSeries/', views.amiiboSeries, name='amiiboSeries'),
+    path('gameSeries/', views.gameSeries, name='gameSeries'),
 ]

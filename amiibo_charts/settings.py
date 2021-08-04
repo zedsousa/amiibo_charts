@@ -75,8 +75,15 @@ WSGI_APPLICATION = 'amiibo_charts.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-}
 
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'charts',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost'
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
