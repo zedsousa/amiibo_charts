@@ -54,7 +54,7 @@ ROOT_URLCONF = 'amiibo_charts.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['charts/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,14 +74,6 @@ WSGI_APPLICATION = 'amiibo_charts.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'charts',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost'
-    }
 }
 
 
