@@ -8,7 +8,7 @@
     <script src="{% static 'bower_components/chartist/dist/chartist.min.js' %}"></script>
   </head>
   <body>
-    <div id="chart" class="ct-chart">Grafico:</div>
+    <div id="chart" class="ct-chart" style="height: 400px;">Grafico de quantidade por resultado:</div>
     <script>
       // Declarando dados
       var dados = "{{retorno}}";
@@ -34,7 +34,9 @@
         labels: marcacao,
         series: valores
       }, {
-        distributeSeries: true
+        distributeSeries: true,
+        high: 100,
+        low: 1,
       });
     </script>
   </body>
