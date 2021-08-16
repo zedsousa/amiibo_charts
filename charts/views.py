@@ -43,7 +43,8 @@ def gameSeries(request):
 
 def amiiboSeries(request):
     response = requests.get("http://localhost:8000/amiibo/amiibo_list")
-
+    
+    #print(response.text)
     data = json.loads(response.text)
     df = pd.json_normalize(data)
 
@@ -53,7 +54,7 @@ def amiiboSeries(request):
     result2 = df2.to_json(orient="index")
     parsed2 = json.loads(result2)
     dump2 = json.dumps(parsed2)
-    for data in parsed2:
-        print(data)  
+    #for item in parsed2:
+    #    print(item)  
 
-    return render(request, 'index.html', {'retorno': dump2})
+    return render(request, 'index.html', {'retorno': dump2,})

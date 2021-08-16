@@ -1,7 +1,41 @@
 {% load static %}
 
-{% block content %}
-{{retorno|safe}}
-  
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dados do thingspeak</title>
+    <link href="{% static 'bower_components/chartist/dist/chartist.min.css' %}" rel="stylesheet">
+    <script src="{% static 'bower_components/chartist/dist/chartist.min.js' %}"></script>
+  </head>
+  <body>
+    <div id="chart" class="ct-chart">Grafico:</div>
+    <script>
+      // Declarando dados
+      var dados = "{{retorno}}";
+      //console.log(dados);
+
+      // Processando dados
+      const marcacao = [];
+      const valores = [];
+      var auxiliar = "";
+      for (let contador = 0; contador < dados.length; contador++)
+      {
+        dados = dados.substr(dados.search(";")+1);
+        auxiliar = dados.substr(0, dados.search("&"))
+        marcacao.push(auxiliar)
+
+        dados = dados.substr(dados.search("quantity")+16);
+        auxiliar = dados.substr(0, dados.search("}"))
+        valores.push(auxiliar);
+      }
+
+      // Exibindo dados
+      new Chartist.Bar('.ct-chart', {
+        labels: marcacao,
+        series: valores
+      }, {
+        distributeSeries: true
+      });
+    </script>
+  </body>
+</html>
